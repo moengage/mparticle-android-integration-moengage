@@ -1,0 +1,13 @@
+[versions]
+minSdk = "21"
+compileSdk = "34"
+mParticleAndroidKitBase = "5.51.3"
+mockito = "5.3.1"
+googleServices = "4.3.15"
+
+[libraries]
+mParticleAndroidKitBase = { module = "com.mparticle:android-kit-base", version.ref = "mParticleAndroidKitBase" }
+mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+
+[plugins]
+plugin-google-services = {id = "com.google.gms.google-services", version.ref = "googleServices" }

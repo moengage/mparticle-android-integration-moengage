@@ -1,0 +1,19 @@
+[versions]
+minSdk = "21"
+compileSdk = "34"
+targetSdk = "34"
+appVersion = "1"
+appVersionName = "1.0"
+
+[libraries]
+appCompat = { module = "androidx.appcompat:appcompat", version = "1.6.1" }
+material = { module = "com.google.android.material:material", version = "1.12.0" }
+lifecycleOwner = { module = "androidx.lifecycle:lifecycle-process", version = "2.7.0" }
+constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.1.4" }
+
+mParticleAndroidKitBase = { module = "com.mparticle:android-kit-base", version = "5.51.3" }
+mParticleCore = { module = "com.mparticle:android-core", version = "5.51.3" }
+
+installReferrer = { module = "com.android.installreferrer:installreferrer", version = "2.2" }
+adIdentifier = { module = "com.google.android.gms:play-services-ads-identifier", version = "18.0.1" }
+fcm = { module = "com.google.firebase:firebase-messaging", version = "24.0.0" }
