@@ -47,12 +47,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + "-Xexplicit-api=strict"
     }
 }
 
 dependencies {
     compileOnly(libs.mParticleAndroidKitBase)
-    compileOnly(moengage.core)
+    compileOnly(moengage.core) {
+        exclude(group = "com.moengage", module = "core")
+    }
+    compileOnly("com.moengage:core:7.5.3-SNAPSHOT")
 
     testImplementation(moengage.core)
     testImplementation(libs.mParticleAndroidKitBase)
