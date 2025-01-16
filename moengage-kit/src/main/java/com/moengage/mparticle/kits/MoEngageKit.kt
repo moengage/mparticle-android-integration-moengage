@@ -36,6 +36,7 @@ import com.moengage.core.internal.model.SdkInstance
 import com.moengage.core.internal.utils.currentMillis
 import com.moengage.core.model.IntegrationPartner
 import com.moengage.firebase.MoEFireBaseHelper
+import com.moengage.mparticle.kits.internal.Cache
 import com.moengage.pushbase.MoEPushHelper
 import com.mparticle.MPEvent
 import com.mparticle.MParticle.IdentityType
@@ -63,7 +64,7 @@ import kotlin.jvm.Throws
 /**
  * MoEngage Kit to integrate MoEngage Android SDK with mParticle Android SDK
  */
-open class MoEngageKit :
+public open class MoEngageKit :
     KitIntegration(),
     IdentityListener,
     UserAttributeListener,
@@ -169,15 +170,12 @@ open class MoEngageKit :
                     appId
                 )
             }
+            Cache.identityMapping?.get(IdentityType.CustomerId)
 
-            mParticleUser.userIdentities[IdentityType.CustomerId]?.let { id ->
-                sdkInstance.logger.log { "$tag updateUserIds(): isUserModified = $isUserModified, UniqueId = $id" }
-                if (isUserModified) {
-                    MoEAnalyticsHelper.setAlias(context, id, appId)
-                } else {
-                    MoEAnalyticsHelper.setUniqueId(context, id, appId)
-                }
+            val identities = mParticleUser.userIdentities.mapKeys {
+                Cache.identityMapping?.get(it.key) ?: it.key.toString()
             }
+            MoEAnalyticsHelper.identifyUser(context, identities, appId)
         } catch (t: Throwable) {
             sdkInstance.logger.log(LogLevel.ERROR, t) { "$tag updateUserIds(): " }
         }
@@ -463,12 +461,12 @@ open class MoEngageKit :
     }
 
     @Throws(SdkNotInitializedException::class)
-    open fun getSdkInstance(appId: String): SdkInstance {
+    public open fun getSdkInstance(appId: String): SdkInstance {
         return SdkInstanceManager.getSdkInstance(appId)
             ?: throw SdkNotInitializedException("MoEngage SDK is not initialized")
     }
 
-    companion object {
+    public companion object {
 
         private val attributeKeyMap: Map<String, String> = mapOf(
             MOBILE_NUMBER to USER_ATTRIBUTE_USER_MOBILE,
