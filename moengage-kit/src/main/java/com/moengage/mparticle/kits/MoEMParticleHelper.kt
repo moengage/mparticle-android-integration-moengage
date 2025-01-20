@@ -14,7 +14,7 @@ public object MoEMParticleHelper {
      *
      * Ensure this mapping set before identifying the user in the mParticle SDK. Possibly call this method in the onCreate() of  [Application] class.
      */
-    public fun setMappingForIdentity(mapping: Map<IdentityType, String>) {
-        Cache.identityMapping = mapping
+    public fun setMappingForIdentity(mapping: Map<IdentityType, String>?) {
+        Cache.setIdentityMapping(mapping)
     }
 }
