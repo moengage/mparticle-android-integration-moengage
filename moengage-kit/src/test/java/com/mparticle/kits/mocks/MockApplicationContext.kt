@@ -19,7 +19,7 @@ import android.content.Context
 /**
  * Mock Application Class
  */
-class MockApplicationContext : Application() {
+internal class MockApplicationContext : Application() {
 
     override fun getApplicationContext(): Context {
         return this

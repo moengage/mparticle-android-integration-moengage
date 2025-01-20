@@ -22,7 +22,7 @@ import com.mparticle.kits.EMAIL
 /**
  * Mock [IdentityApi] Class
  */
-class MockIdentityApi : IdentityApi() {
+internal class MockIdentityApi : IdentityApi() {
 
     override fun getCurrentUser(): MParticleUser {
         val identity = HashMap<MParticle.IdentityType, String>()
