@@ -170,11 +170,10 @@ public open class MoEngageKit :
                     appId
                 )
             }
-            Cache.identityMapping?.get(IdentityType.CustomerId)
-
             val identities = mParticleUser.userIdentities.mapKeys {
-                Cache.identityMapping?.get(it.key) ?: it.key.toString()
+                Cache.getIdentityForKey(it.key) ?: it.key.toString()
             }
+
             MoEAnalyticsHelper.identifyUser(context, identities, appId)
         } catch (t: Throwable) {
             sdkInstance.logger.log(LogLevel.ERROR, t) { "$tag updateUserIds(): " }
