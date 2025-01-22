@@ -51,8 +51,8 @@ android {
 }
 
 dependencies {
+    api(moengage.core)
     compileOnly(libs.mParticleAndroidKitBase)
-    compileOnly(moengage.core)
 
     testImplementation(moengage.core)
     testImplementation(libs.mParticleAndroidKitBase)

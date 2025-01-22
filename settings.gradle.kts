@@ -32,7 +32,7 @@ dependencyResolutionManagement {
             from("com.moengage:android-dependency-catalog-internal:2.1.1")
         }
         create("moengage") {
-            from("com.moengage:android-dependency-catalog:4.5.2")
+            from("com.moengage:android-dependency-catalog:4.5.3")
         }
         create("appLibs") {
             from(files("./gradle/appLibs.versions.toml"))
