@@ -1,8 +1,8 @@
 # mparticle-android-integration-moengage
 
-# Release Date
+# 22-01-2025
 
-## Release Version
+## 1.1.0
 
 - Integrating `moe-android-sdk` in the Kit
 
