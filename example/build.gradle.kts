@@ -65,7 +65,6 @@ dependencies {
     implementation(appLibs.fcm)
     implementation(appLibs.installReferrer)
 
-    implementation(moengage.core)
     implementation(moengage.inapp)
     implementation(moengageInternal.kotlinStdLib)
 }
