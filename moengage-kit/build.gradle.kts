@@ -56,6 +56,10 @@ dependencies {
 
     testImplementation(libs.moengageCore)
     testImplementation(libs.mParticleAndroidKitBase)
-    testImplementation(moengageInternal.bundles.junitBundle)
+    testImplementation(moengageInternal.bundles.junit5)
     testImplementation(libs.mockito)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

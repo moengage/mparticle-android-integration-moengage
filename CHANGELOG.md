@@ -4,6 +4,9 @@
 
 ## Release Version
 
+- [major] Target and Compiled SDK updated to 35
+- [major] Min SDK updated to 23
+- [patch] Moving JUnit 4 to JUnit 5
 - [minor] Upgrading AGP version from `8.4.0` to `8.7.3`
 
 # 22-01-2025
