@@ -55,7 +55,7 @@ dependencies {
     api(moengage.core)  {
         exclude(group = "com.moengage", module = "core")
     }
-    api("com.moengage:core:7.5.3-SNAPSHOT")
+    api("com.moengage:core:7.7.0-SNAPSHOT")
     compileOnly(libs.mParticleAndroidKitBase)
 
     testImplementation(moengage.core)
