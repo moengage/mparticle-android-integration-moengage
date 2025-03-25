@@ -21,10 +21,10 @@ plugins {
 val libVersionName = project.findProperty("VERSION_NAME") as String
 android {
     namespace = "com.moengage.mparticle.kits"
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdk = moengageInternal.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
+        minSdk = moengageInternal.versions.minSdk.get().toInt()
 
         buildConfigField("String", "MOENGAGE_KIT_VERSION", "\"$libVersionName\"")
     }

@@ -1,6 +1,4 @@
 [versions]
-minSdk = "23"
-compileSdk = "35"
 mParticleAndroidKitBase = "5.51.3"
 mockito = "5.3.1"
 googleServices = "4.4.2"
