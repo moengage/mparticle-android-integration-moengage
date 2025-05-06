@@ -13,7 +13,7 @@ This repository contains the [MoEngage](https://www.moengage.com) integration fo
 
 ## SDK Installation
 
-![MavenBadge](https://maven-badges.herokuapp.com/maven-central/com.moengage/mparticle-android-integration-moengage/badge.svg)
+![MavenBadge](ttps://img.shields.io/maven-central/v/com.moengage/mparticle-android-integration-moengage/badge.svg)
 
 ### mParticle Integration
 Integrate [mParticle Android SDK](https://docs.mparticle.com/developers/sdk/android/initialization/)
