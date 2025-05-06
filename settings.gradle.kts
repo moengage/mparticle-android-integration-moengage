@@ -29,10 +29,10 @@ dependencyResolutionManagement {
 
     versionCatalogs {
         create("moengageInternal") {
-            from("com.moengage:android-dependency-catalog-internal:2.2.0")
+            from("com.moengage:android-dependency-catalog-internal:3.0.0")
         }
         create("moengage") {
-            from("com.moengage:android-dependency-catalog:4.5.3")
+            from("com.moengage:android-dependency-catalog:5.0.0")
         }
         create("appLibs") {
             from(files("./gradle/appLibs.versions.toml"))
