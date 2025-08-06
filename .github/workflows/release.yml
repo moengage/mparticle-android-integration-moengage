@@ -7,10 +7,6 @@ on:
         type: string
         description: 'Enter the Release ticket number'
         required: true
-      releaseType:
-        type: string
-        description: 'Enter the Release type [major / minor / patch]'
-        required: true
       releaseNotes:
         type: string
         description: 'Enter the Release note'
@@ -24,7 +20,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout sdk automation scripts
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: moengage/sdk-automation-scripts
           path: sdk-automation-scripts
@@ -32,7 +28,7 @@ jobs:
       - name: Automation script setup
         uses: ./sdk-automation-scripts/actions/android-repository-setup
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: source
           fetch-depth: 0
@@ -48,4 +44,4 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKeyPassword }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          ../sdk-automation-scripts/scripts/android/single-module-release.main.kts moengage-kit moengage-kit ${{ github.event.inputs.releaseTicket }} ${{ github.event.inputs.releaseType }} true true ${{ github.event.inputs.releaseNotes }}
+          ../sdk-automation-scripts/scripts/android/single-module-release.main.kts moengage-kit moengage-kit ${{ github.event.inputs.releaseTicket }} true true ${{ github.event.inputs.releaseNotes }}
