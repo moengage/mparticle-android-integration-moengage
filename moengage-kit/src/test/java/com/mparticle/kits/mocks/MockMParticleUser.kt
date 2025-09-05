@@ -15,6 +15,8 @@ package com.mparticle.kits.mocks
 
 import com.mparticle.MParticle
 import com.mparticle.UserAttributeListenerType
+import com.mparticle.audience.AudienceResponse
+import com.mparticle.audience.AudienceTask
 import com.mparticle.consent.ConsentState
 import com.mparticle.identity.MParticleUser
 import com.mparticle.kits.M_PARTICLE_ID
@@ -55,4 +57,8 @@ class MockMParticleUser(
     override fun getFirstSeenTime(): Long = 0
 
     override fun getLastSeenTime(): Long = 0
+
+    override fun getUserAudiences(): AudienceTask<AudienceResponse?>? {
+        return null
+    }
 }

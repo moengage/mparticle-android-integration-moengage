@@ -1,5 +1,5 @@
 [versions]
-mParticleAndroidKitBase = "5.51.3"
+mParticleAndroidKitBase = "5.73.1"
 mockito = "5.3.1"
 googleServices = "4.4.2"
 
