@@ -33,6 +33,7 @@ internal object MParticleRequestHandler {
             email("moengage@test.com")
             customerId("loginUserId")
             userIdentity(MParticle.IdentityType.Other, "moengage-mparticle-other-id-1")
+            userIdentity(MParticle.IdentityType.Facebook, "fb_id")
             build()
         }
 
@@ -131,9 +132,10 @@ internal object MParticleRequestHandler {
     }
 
     fun modifyUserAttributes() {
-        val modifyRequest = IdentityApiRequest.withUser(MParticle.getInstance()?.Identity()?.currentUser)
-            .email("moengageChangedEmail@test.com")
-            .build()
+        val modifyRequest =
+            IdentityApiRequest.withUser(MParticle.getInstance()?.Identity()?.currentUser)
+                .email("moengageChangedEmail@test.com")
+                .build()
         MParticle.getInstance()?.Identity()?.modify(modifyRequest)
             ?.addSuccessListener { identityApiResult ->
                 Log.d(TAG, "MoEngage Id Changed ${identityApiResult.user.userAttributes}")

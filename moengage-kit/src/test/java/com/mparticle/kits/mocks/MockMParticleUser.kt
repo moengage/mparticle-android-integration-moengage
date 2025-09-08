@@ -24,7 +24,7 @@ import com.mparticle.kits.M_PARTICLE_ID
 /**
  * Mock [MParticleUser] Class
  */
-class MockMParticleUser(
+internal class MockMParticleUser(
     private val identities: Map<MParticle.IdentityType, String>
 ) : MParticleUser {
 

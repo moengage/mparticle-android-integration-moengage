@@ -4,6 +4,7 @@
 
 ## Release Version
 
+- [minor] Added support for Multi-ID
 - [major] Updating `moe-android-sdk` version to `14.03.02`
 - [major] Target and Compiled SDK updated to 35
 - [major] Min SDK updated to 23
