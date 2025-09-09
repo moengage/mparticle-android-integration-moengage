@@ -51,10 +51,10 @@ android {
 }
 
 dependencies {
-    api(moengage.core)
+    api(libs.moengageCore)
     compileOnly(libs.mParticleAndroidKitBase)
 
-    testImplementation(moengage.core)
+    testImplementation(libs.moengageCore)
     testImplementation(libs.mParticleAndroidKitBase)
     testImplementation(moengageInternal.bundles.junitBundle)
     testImplementation(libs.mockito)

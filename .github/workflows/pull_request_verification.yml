@@ -7,8 +7,8 @@ on:
     branches: [ "development", "master" ]
 
 env:
-  ORG_GRADLE_PROJECT_oss_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_oss_mavenCentralUsername }}
-  ORG_GRADLE_PROJECT_oss_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_oss_mavenCentralPassword }}
+  ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_mavenCentralUsername }}
+  ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_mavenCentralPassword }}
   ORG_GRADLE_PROJECT_profileId: ${{ secrets.ORG_GRADLE_PROJECT_profileId }}
   ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKey }}
   ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKeyId }}
@@ -23,7 +23,7 @@ jobs:
       fail-fast: true
     steps:
       - name: Checkout sdk automation scripts
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: moengage/sdk-automation-scripts
           path: sdk-automation-scripts
@@ -31,11 +31,9 @@ jobs:
       - name: Automation script setup
         uses: ./sdk-automation-scripts/actions/android-repository-setup
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: source
-          fetch-depth: 0
-          fetch-tags: true
           token: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
       - name: Build project
         working-directory: source

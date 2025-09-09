@@ -1,0 +1,50 @@
+name: Update MoEngage Core Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      ticket_number:
+        description: 'Ticket number for the update.'
+        required: true
+      moengage_version:
+        description: 'The moe-android-sdk version to which you want to update.'
+        required: true
+      release_notes:
+        description: 'Link to the release notes'
+        required: true
+        type: string
+
+env:
+  ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_mavenCentralUsername }}
+  ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_mavenCentralPassword }}
+  ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKey }}
+  ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKeyId }}
+  ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_signingInMemoryKeyPassword }}
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  update_moengage_core:
+    environment: publishing_gradle_config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: "development"
+          path: source
+      - name: automation-repo-setup
+        uses: ./source/.github/actions/common-repo-setup
+        with:
+          sdk_bot_access_token: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
+      - name: Update moengageCore version
+        working-directory: source
+        run: ../sdk-automation-scripts/scripts/android/partner-version-update.main.kts "${{ github.event.inputs.ticket_number }}" "${{ github.event.inputs.release_notes }}" "${{ github.event.inputs.moengage_version }}" mparticle
+      - name: Verify build
+        uses: ./sdk-automation-scripts/actions/android-build-verification
+        with:
+          working-directory: source
+      - name: Trigger release workflow
+        run: |
+          gh workflow run release.yaml \
+              -f releaseTicket="${{ github.event.inputs.ticket_number }}" \
+              -f releaseNotes="${{ github.event.inputs.release_notes }}"
