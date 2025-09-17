@@ -23,7 +23,7 @@ import org.mockito.Mockito
 /**
  * Mock [KitManagerImpl] Class
  */
-class MockKitManagerImpl(
+internal class MockKitManagerImpl(
     context: Context,
     reportingManager: ReportingManager,
     callback: CoreCallbacks

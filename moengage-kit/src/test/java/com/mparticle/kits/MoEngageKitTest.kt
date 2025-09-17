@@ -15,9 +15,11 @@ package com.mparticle.kits
 
 import android.content.Context
 import com.moengage.mparticle.kits.KIT_NAME
+import com.moengage.mparticle.kits.MoEMParticleHelper
 import com.moengage.mparticle.kits.MoEngageKit
 import com.mparticle.MPEvent
 import com.mparticle.MParticle
+import com.mparticle.MParticle.IdentityType
 import com.mparticle.identity.MParticleUser
 import com.mparticle.kits.mocks.MockApplicationContext
 import com.mparticle.kits.mocks.MockMParticleUser
@@ -174,5 +176,34 @@ internal class MoEngageKitTest {
     fun logEventWithInvalidData() {
         val result = mockMoEngageKit.logEvent(MPEvent.Builder("").build())
         assertTrue(result.isEmpty())
+    }
+
+    @Test
+    fun getMappedUserIdentityTest() {
+        MoEMParticleHelper.setMappingForIdentity(
+            mapOf(
+                IdentityType.Alias to "alias",
+                IdentityType.CustomerId to "customer_id",
+                IdentityType.Facebook to "facebook_id"
+            )
+        )
+
+        assertEquals(
+            mockMoEngageKit.getMappedUserIdentity(
+                mapOf(
+                    IdentityType.Alias to "aliasIdValue",
+                    IdentityType.CustomerId to "customerIdValue",
+                    IdentityType.Facebook to "facebookIdValue",
+                    IdentityType.Email to "emailValue",
+                    IdentityType.Other to "otherAttributeNotAvailableInMapping"
+                )
+            ),
+            mapOf(
+                "alias" to "aliasIdValue",
+                "customer_id" to "customerIdValue",
+                "facebook_id" to "facebookIdValue",
+                "u_em" to "emailValue"
+            )
+        )
     }
 }

@@ -28,7 +28,7 @@ import org.mockito.Mockito
 /**
  * Mock [MoEngageKit] Class
  */
-class MockMoEngageKit : MoEngageKit() {
+internal class MockMoEngageKit : MoEngageKit() {
 
     init {
         kitManager = MockKitManagerImpl(

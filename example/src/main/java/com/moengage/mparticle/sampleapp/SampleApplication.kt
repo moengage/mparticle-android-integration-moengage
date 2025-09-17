@@ -20,6 +20,7 @@ import com.moengage.core.MoEngage
 import com.moengage.core.config.LogConfig
 import com.moengage.core.config.NotificationConfig
 import com.moengage.core.model.IntegrationPartner
+import com.moengage.mparticle.kits.MoEMParticleHelper
 import com.moengage.mparticle.kits.MoEngageKit
 import com.mparticle.MParticle
 import com.mparticle.MParticleOptions
@@ -67,5 +68,14 @@ class SampleApplication : Application() {
 
         // Configure the required configuration for MoEngage SDK
         MoEngage.configureForDefaultInstance(moEngageBuilder, IntegrationPartner.M_PARTICLE)
+
+        // Set the Identity mapping for mParticle and MoEngage
+        MoEMParticleHelper.setMappingForIdentity(
+            mapOf(
+                MParticle.IdentityType.Facebook to "u_fb",
+                MParticle.IdentityType.Google to "u_g",
+                MParticle.IdentityType.Other to "u_cust_id"
+            )
+        )
     }
 }

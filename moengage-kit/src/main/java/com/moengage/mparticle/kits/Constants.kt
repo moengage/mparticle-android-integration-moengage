@@ -13,7 +13,7 @@
 
 package com.moengage.mparticle.kits
 
-const val KIT_NAME = "MoEngage"
+internal const val KIT_NAME = "MoEngage"
 
 internal const val MOE_APP_ID_KEY = "APP_ID"
 
