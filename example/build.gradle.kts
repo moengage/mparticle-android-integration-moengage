@@ -53,18 +53,18 @@ dependencies {
 
     implementation(projects.moengageKit)
 
-    implementation(appLibs.appCompat)
+    implementation(moengage.androidXCompact)
+    implementation(moengage.androidXLifecycle)
+    implementation(moengage.gmsPlayAdIdentifier)
+    implementation(moengage.firebaseMessaging)
+
+    implementation(moengage.inapp)
+    implementation(moengageInternal.kotlinStdLib)
+
     implementation(appLibs.material)
-    implementation(appLibs.lifecycleOwner)
     implementation(appLibs.constraintLayout)
 
     implementation(appLibs.mParticleCore)
     implementation(appLibs.mParticleAndroidKitBase)
-
-    implementation(appLibs.adIdentifier)
-    implementation(appLibs.fcm)
     implementation(appLibs.installReferrer)
-
-    implementation(moengage.inapp)
-    implementation(moengageInternal.kotlinStdLib)
 }
