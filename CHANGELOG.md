@@ -1,18 +1,14 @@
 # mparticle-android-integration-moengage
 
-# Release Date
+# 24-09-2025
 
-## Release Version
-- [patch] Release notes [here](https://developers.moengage.com/hc/en-us/articles/4403896795540-Changelog#h_01K4MM0WWXBEB7DNBR89A6C09R)
-- [patch] MoEngage SDK version updated to `14.03.04`
-
-
-- [minor] Added support for Multi-ID
-- [major] Updating `moe-android-sdk` version to `14.03.02`
-- [major] Target and Compiled SDK updated to 35
-- [major] Min SDK updated to 23
-- [patch] Moving JUnit 4 to JUnit 5
-- [minor] Upgrading AGP version from `8.4.0` to `8.7.3`
+## 2.0.0
+- Release notes [here](https://developers.moengage.com/hc/en-us/articles/4403896795540-Changelog#h_01K4MM0WWXBEB7DNBR89A6C09R)
+- Added support for Multi-ID
+- Target and Compiled SDK updated to 35
+- Min SDK updated to 23
+- Moving JUnit 4 to JUnit 5
+- Upgrading AGP version from `8.4.0` to `8.7.3`
 
 # 22-01-2025
 
