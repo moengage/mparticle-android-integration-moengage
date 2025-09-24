@@ -1,0 +1,17 @@
+name: 'Setup segment repository'
+description: 'This action sets up the segment repository.'
+inputs:
+  sdk_bot_access_token:
+    description: 'Token for accessing moengage/sdk-automation-scripts and the source repository'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout sdk automation scripts
+      uses: actions/checkout@v4
+      with:
+        repository: moengage/sdk-automation-scripts
+        path: sdk-automation-scripts
+        token: ${{ inputs.sdk_bot_access_token }}
+    - name: Automation script setup
+      uses: ./sdk-automation-scripts/actions/android-repository-setup
