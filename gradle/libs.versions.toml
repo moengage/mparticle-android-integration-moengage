@@ -4,7 +4,7 @@ mockito = "5.3.1"
 googleServices = "4.4.2"
 
 [libraries]
-moengageCore = { module = "com.moengage:moe-android-sdk", version = "14.03.03" }
+moengageCore = { module = "com.moengage:moe-android-sdk", version = "14.03.04" }
 mParticleAndroidKitBase = { module = "com.mparticle:android-kit-base", version.ref = "mParticleAndroidKitBase" }
 mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 
