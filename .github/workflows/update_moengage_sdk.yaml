@@ -46,6 +46,6 @@ jobs:
       - name: Trigger release workflow
         working-directory: source
         run: |
-          gh workflow run release.yaml \
+          gh workflow run release.yml \
               -f releaseTicket="${{ github.event.inputs.ticket_number }}" \
               -f releaseNotes="${{ github.event.inputs.release_notes }}"
