@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 MoEngage Inc.
+ * Copyright (c) 2014-2025 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -10,7 +10,6 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.moengage.mparticle.kits
 
 import android.app.Application
@@ -63,9 +62,7 @@ import com.mparticle.kits.ReportingMessage
 import java.math.BigDecimal
 import kotlin.jvm.Throws
 
-/**
- * MoEngage Kit to integrate MoEngage Android SDK with mParticle Android SDK
- */
+/** MoEngage Kit to integrate MoEngage Android SDK with mParticle Android SDK */
 public open class MoEngageKit :
     KitIntegration(),
     IdentityListener,
@@ -93,25 +90,17 @@ public open class MoEngageKit :
         integrationHelper = MoEIntegrationHelper(context, IntegrationPartner.M_PARTICLE)
         integrationHelper.initialize(appId, context.applicationContext as Application)
         MoEIntegrationHelper.addIntegrationMeta(
-            IntegrationMeta(
-                INTEGRATION_META_TYPE,
-                BuildConfig.MOENGAGE_KIT_VERSION
-            ),
-            appId
-        )
+            IntegrationMeta(INTEGRATION_META_TYPE, BuildConfig.MOENGAGE_KIT_VERSION), appId)
 
         this.appId = appId
         this.sdkInstance = getSdkInstance(appId)
-        sdkInstance.logger.log { "$tag onKitCreate(): mParticle Integration Initialised for $appId" }
+        sdkInstance.logger.log {
+            "$tag onKitCreate(): mParticle Integration Initialised for $appId"
+        }
 
         return listOf(
             ReportingMessage(
-                this,
-                ReportingMessage.MessageType.APP_STATE_TRANSITION,
-                currentMillis(),
-                null
-            )
-        )
+                this, ReportingMessage.MessageType.APP_STATE_TRANSITION, currentMillis(), null))
     }
 
     override fun onIdentifyCompleted(
@@ -168,30 +157,23 @@ public open class MoEngageKit :
                 Logger.print(LogLevel.WARN) { "$tag updateUserIds(): SDK not initialised" }
                 return
             }
-            sdkInstance.logger.log { "$tag updateUserIds(): isUserModified = $isUserModified, Identities = ${mParticleUser.userIdentities}" }
+            sdkInstance.logger.log {
+                "$tag updateUserIds(): isUserModified = $isUserModified, Identities = ${mParticleUser.userIdentities}"
+            }
 
             MoEAnalyticsHelper.identifyUser(
-                context,
-                getMappedUserIdentity(mParticleUser.userIdentities),
-                appId
-            )
+                context, getMappedUserIdentity(mParticleUser.userIdentities), appId)
 
             mParticleUser.userIdentities[IdentityType.Email]?.let { email ->
                 sdkInstance.logger.log { "$tag updateUserIds(): tracking email as $email" }
-                MoEAnalyticsHelper.setEmailId(
-                    context,
-                    email,
-                    appId
-                )
+                MoEAnalyticsHelper.setEmailId(context, email, appId)
             }
 
             mParticleUser.userIdentities[IdentityType.MobileNumber]?.let { mobileNumber ->
-                sdkInstance.logger.log { "$tag updateUserIds(): tracking mobileNumber as $mobileNumber" }
-                MoEAnalyticsHelper.setMobileNumber(
-                    context,
-                    mobileNumber,
-                    appId
-                )
+                sdkInstance.logger.log {
+                    "$tag updateUserIds(): tracking mobileNumber as $mobileNumber"
+                }
+                MoEAnalyticsHelper.setMobileNumber(context, mobileNumber, appId)
             }
         } catch (t: Throwable) {
             sdkInstance.logger.log(LogLevel.ERROR, t) { "$tag updateUserIds(): " }
@@ -234,12 +216,7 @@ public open class MoEngageKit :
                 return
             }
             sdkInstance.logger.log { "$tag setLocation(): " }
-            MoEAnalyticsHelper.setLocation(
-                context,
-                location.latitude,
-                location.longitude,
-                appId
-            )
+            MoEAnalyticsHelper.setLocation(context, location.latitude, location.longitude, appId)
         } catch (t: Throwable) {
             sdkInstance.logger.log(LogLevel.ERROR, t) { "$tag setLocation(): " }
         }
@@ -259,13 +236,7 @@ public open class MoEngageKit :
             }
 
             return listOf(
-                ReportingMessage(
-                    this,
-                    ReportingMessage.MessageType.OPT_OUT,
-                    currentMillis(),
-                    null
-                )
-            )
+                ReportingMessage(this, ReportingMessage.MessageType.OPT_OUT, currentMillis(), null))
         } catch (t: Throwable) {
             sdkInstance.logger.log(LogLevel.ERROR, t) { "$tag setOptOut(): " }
         }
@@ -292,12 +263,10 @@ public open class MoEngageKit :
                     }
                     properties.setNonInteractive()
                     MoEAnalyticsHelper.trackEvent(
-                        context,
-                        INSTALL_REFERRER_EVENT,
-                        properties,
-                        appId
-                    )
-                    kitPreferences.edit().putBoolean(PREF_KEY_HAS_TRACKED_REFERRER_ATTRIBUTES, true)
+                        context, INSTALL_REFERRER_EVENT, properties, appId)
+                    kitPreferences
+                        .edit()
+                        .putBoolean(PREF_KEY_HAS_TRACKED_REFERRER_ATTRIBUTES, true)
                         .apply()
                 }
             }
@@ -311,8 +280,7 @@ public open class MoEngageKit :
         incrementedBy: Number,
         value: String,
         user: FilteredMParticleUser
-    ) {
-    }
+    ) {}
 
     override fun onRemoveUserAttribute(key: String, user: FilteredMParticleUser) {}
 
@@ -322,8 +290,7 @@ public open class MoEngageKit :
         oldState: ConsentState,
         newState: ConsentState,
         user: FilteredMParticleUser
-    ) {
-    }
+    ) {}
 
     override fun onSetUserAttribute(
         attributeKey: String,
@@ -353,7 +320,9 @@ public open class MoEngageKit :
             }
             sdkInstance.logger.log { "$tag onSetAllUserAttributes(): " }
             if (!kitPreferences.getBoolean(PREF_KEY_HAS_SYNCED_ATTRIBUTES, false)) {
-                sdkInstance.logger.log { "$tag onSetAllUserAttributes(): setting all the attributes" }
+                sdkInstance.logger.log {
+                    "$tag onSetAllUserAttributes(): setting all the attributes"
+                }
                 for ((attributeKey, attributeValue) in userAttributes) {
                     trackUserAttribute(attributeKey, attributeValue)
                 }
@@ -375,7 +344,9 @@ public open class MoEngageKit :
                 Logger.print(LogLevel.WARN) { "$tag trackUserAttribute(): SDK not initialised" }
                 return
             }
-            sdkInstance.logger.log { "$tag trackUserAttribute(): Key = $attributeKey, Value = $attributeValue" }
+            sdkInstance.logger.log {
+                "$tag trackUserAttribute(): Key = $attributeKey, Value = $attributeValue"
+            }
             var mappedKey = attributeKeyMap[attributeKey] ?: attributeKey
 
             // All the mParticle standard attribute starts with "$".
@@ -415,7 +386,9 @@ public open class MoEngageKit :
             }
             sdkInstance.logger.log { "$tag logEvent(): " }
             if (event.eventName.isBlank()) {
-                sdkInstance.logger.log(LogLevel.WARN) { "$tag logEvent(): Event name can't be empty" }
+                sdkInstance.logger.log(LogLevel.WARN) {
+                    "$tag logEvent(): Event name can't be empty"
+                }
                 return listOf()
             }
 
@@ -486,10 +459,14 @@ public open class MoEngageKit :
             }
             sdkInstance.logger.log { "$tag willHandlePushMessage():" }
             return intent.extras?.let { bundle ->
-                sdkInstance.logger.log { "$tag willHandlePushMessage(): checking if message is from MoEngage" }
+                sdkInstance.logger.log {
+                    "$tag willHandlePushMessage(): checking if message is from MoEngage"
+                }
                 val isFromMoEngagePlatform =
                     MoEPushHelper.getInstance().isFromMoEngagePlatform(bundle)
-                sdkInstance.logger.log { "$tag willHandlePushMessage(): isFromMoEngagePlatform = $isFromMoEngagePlatform" }
+                sdkInstance.logger.log {
+                    "$tag willHandlePushMessage(): isFromMoEngagePlatform = $isFromMoEngagePlatform"
+                }
                 isFromMoEngagePlatform
             } ?: false
         } catch (t: Throwable) {
@@ -524,18 +501,20 @@ public open class MoEngageKit :
     internal fun getMappedUserIdentity(
         userIdentities: Map<IdentityType, String>
     ): Map<String, String> {
-        return userIdentities.mapNotNull { (key, value) ->
-            getIdentityForKey(key)?.let { mappedKey -> mappedKey to value }
-        }.toMap()
+        return userIdentities
+            .mapNotNull { (key, value) ->
+                getIdentityForKey(key)?.let { mappedKey -> mappedKey to value }
+            }
+            .toMap()
     }
 
     private companion object {
 
-        private val attributeKeyMap: Map<String, String> = mapOf(
-            MOBILE_NUMBER to USER_ATTRIBUTE_USER_MOBILE,
-            GENDER to USER_ATTRIBUTE_USER_GENDER,
-            FIRSTNAME to USER_ATTRIBUTE_USER_FIRST_NAME,
-            LASTNAME to USER_ATTRIBUTE_USER_LAST_NAME
-        )
+        private val attributeKeyMap: Map<String, String> =
+            mapOf(
+                MOBILE_NUMBER to USER_ATTRIBUTE_USER_MOBILE,
+                GENDER to USER_ATTRIBUTE_USER_GENDER,
+                FIRSTNAME to USER_ATTRIBUTE_USER_FIRST_NAME,
+                LASTNAME to USER_ATTRIBUTE_USER_LAST_NAME)
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 MoEngage Inc.
+ * Copyright (c) 2014-2025 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -10,30 +10,19 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.mparticle.kits
 
-/**
- * Key to get the App Id from mParticle Setting in onKitCreate
- */
+/** Key to get the App Id from mParticle Setting in onKitCreate */
 internal const val MOE_APP_ID_KEY = "APP_ID"
 
-/**
- * Dummy MoEngage App Id
- */
+/** Dummy MoEngage App Id */
 internal const val MoEngage_APP_ID = "Dummy-App-Id"
 
-/**
- * Dummy Email Id
- */
+/** Dummy Email Id */
 internal const val EMAIL = "test@test.com"
 
-/**
- * Dummy User Unique Id
- */
+/** Dummy User Unique Id */
 internal const val CUSTOMER_ID = "122345"
 
-/**
- * Dummy mParticle Id for User
- */
+/** Dummy mParticle Id for User */
 internal const val M_PARTICLE_ID = 999L

@@ -41,6 +41,6 @@ jobs:
       - name: Unit test
         working-directory: source
         run: ./gradlew test
-      - name: Ktlint check
+      - name: Lint check
         working-directory: source
-        run: ./gradlew ktlintcheck
+        run: ./gradlew spotlessCheck

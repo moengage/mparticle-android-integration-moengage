@@ -9,4 +9,5 @@ mParticleAndroidKitBase = { module = "com.mparticle:android-kit-base", version.r
 mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 
 [plugins]
-plugin-google-services = {id = "com.google.gms.google-services", version.ref = "googleServices" }
+plugin-google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
+spotless = { id = "com.diffplug.spotless", version = "7.2.1" }
