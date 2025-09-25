@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 MoEngage Inc.
+ * Copyright (c) 2014-2025 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -10,7 +10,6 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.mparticle.kits.mocks
 
 import android.content.Context
@@ -25,17 +24,15 @@ import com.mparticle.kits.KitConfiguration
 import com.mparticle.kits.MoEngage_APP_ID
 import org.mockito.Mockito
 
-/**
- * Mock [MoEngageKit] Class
- */
+/** Mock [MoEngageKit] Class */
 internal class MockMoEngageKit : MoEngageKit() {
 
     init {
-        kitManager = MockKitManagerImpl(
-            Mockito.mock(Context::class.java),
-            Mockito.mock(ReportingManager::class.java),
-            Mockito.mock(CoreCallbacks::class.java)
-        )
+        kitManager =
+            MockKitManagerImpl(
+                Mockito.mock(Context::class.java),
+                Mockito.mock(ReportingManager::class.java),
+                Mockito.mock(CoreCallbacks::class.java))
     }
 
     override fun getConfiguration(): KitConfiguration {
@@ -46,7 +43,6 @@ internal class MockMoEngageKit : MoEngageKit() {
         return SdkInstance(
             instanceMeta = InstanceMeta(MoEngage_APP_ID, true, true),
             initConfig = InitConfig(MoEngage_APP_ID),
-            config = getDefaultRemoteConfig()
-        )
+            config = getDefaultRemoteConfig())
     }
 }

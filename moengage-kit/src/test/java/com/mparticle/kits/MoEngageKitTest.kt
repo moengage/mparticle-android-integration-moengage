@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 MoEngage Inc.
+ * Copyright (c) 2014-2025 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -10,7 +10,6 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.mparticle.kits
 
 import android.content.Context
@@ -33,9 +32,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.mockito.Mockito
 
-/**
- * Test Class to test the functionality of [MoEngageKit]
- */
+/** Test Class to test the functionality of [MoEngageKit] */
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 internal class MoEngageKitTest {
 
@@ -45,23 +42,18 @@ internal class MoEngageKitTest {
     fun setup() {
         // Setup the MockMoEngageKit instance to use later
         mockMoEngageKit.onKitCreate(
-            hashMapOf(MOE_APP_ID_KEY to MoEngage_APP_ID),
-            MockApplicationContext()
-        )
+            hashMapOf(MOE_APP_ID_KEY to MoEngage_APP_ID), MockApplicationContext())
     }
 
-    /**
-     * Description: Test getName of MoEngageKit
-     * Excepted: kit name should equal to [KIT_NAME]
-     */
+    /** Description: Test getName of MoEngageKit Excepted: kit name should equal to [KIT_NAME] */
     @Test
     fun testGetName() {
         assertEquals(mockMoEngageKit.name, KIT_NAME)
     }
 
     /**
-     * Description: Test onKitCreate method with invalid setting.
-     * Expected Result: Should throw exception as App Id is mandatory
+     * Description: Test onKitCreate method with invalid setting. Expected Result: Should throw
+     * exception as App Id is mandatory
      */
     @Test
     @Throws(Exception::class)
@@ -76,18 +68,16 @@ internal class MoEngageKitTest {
     }
 
     /**
-     * Description: Test onKitCreate method with valid setting.
-     * Expected Result: Should process the request properly without any exception
+     * Description: Test onKitCreate method with valid setting. Expected Result: Should process the
+     * request properly without any exception
      */
     @Test
     @Throws(Exception::class)
     fun testOnKitCreateWithValidSetting() {
         var exception: Exception? = null
         try {
-            MockMoEngageKit().onKitCreate(
-                hashMapOf(MOE_APP_ID_KEY to MoEngage_APP_ID),
-                MockApplicationContext()
-            )
+            MockMoEngageKit()
+                .onKitCreate(hashMapOf(MOE_APP_ID_KEY to MoEngage_APP_ID), MockApplicationContext())
         } catch (e: Exception) {
             exception = e
         }
@@ -95,8 +85,8 @@ internal class MoEngageKitTest {
     }
 
     /**
-     * Description: Test User Identity management methods with invalid user data
-     * Expected Result: Should not throw any exception even with invalid data
+     * Description: Test User Identity management methods with invalid user data Expected Result:
+     * Should not throw any exception even with invalid data
      */
     @Test
     fun testUserIdentityWithInValidData() {
@@ -113,8 +103,8 @@ internal class MoEngageKitTest {
     }
 
     /**
-     * Description: Test User Identity management methods with valid user data
-     * Expected Result: Should process the request without any exception
+     * Description: Test User Identity management methods with valid user data Expected Result:
+     * Should process the request without any exception
      */
     @Test
     fun testUserIdentityWithValidData() {
@@ -135,42 +125,34 @@ internal class MoEngageKitTest {
     }
 
     /**
-     * Description: Test Event Log without any event attributes
-     * Expected Result: should return proper list of [ReportingMessage]
+     * Description: Test Event Log without any event attributes Expected Result: should return
+     * proper list of [ReportingMessage]
      */
     @Test
     fun logEventWithWithoutAttributes() {
-        val eventWithProperties = MPEvent.Builder(
-            "Custom Event",
-            MParticle.EventType.Other
-        ).build()
+        val eventWithProperties = MPEvent.Builder("Custom Event", MParticle.EventType.Other).build()
         val result: List<ReportingMessage?> = mockMoEngageKit.logEvent(eventWithProperties)
         assertTrue(result.isNotEmpty())
     }
 
     /**
-     * Description: Test Event Log with event attributes
-     * Expected Result: should return proper list of [ReportingMessage]
+     * Description: Test Event Log with event attributes Expected Result: should return proper list
+     * of [ReportingMessage]
      */
     @Test
     fun logEventWithAttributes() {
-        val eventWithProperties = MPEvent.Builder(
-            "Custom Event",
-            MParticle.EventType.Other
-        ).customAttributes(
-            mapOf(
-                "category" to "Destination Intro",
-                "title" to "Paris"
-            )
-        ).build()
+        val eventWithProperties =
+            MPEvent.Builder("Custom Event", MParticle.EventType.Other)
+                .customAttributes(mapOf("category" to "Destination Intro", "title" to "Paris"))
+                .build()
 
         val result: List<ReportingMessage?> = mockMoEngageKit.logEvent(eventWithProperties)
         assertTrue(result.isNotEmpty())
     }
 
     /**
-     * Description: Test Event Log with invalid event name
-     * Expected Result: should return empty list of [ReportingMessage]
+     * Description: Test Event Log with invalid event name Expected Result: should return empty list
+     * of [ReportingMessage]
      */
     @Test
     fun logEventWithInvalidData() {
@@ -184,9 +166,7 @@ internal class MoEngageKitTest {
             mapOf(
                 IdentityType.Alias to "alias",
                 IdentityType.CustomerId to "customer_id",
-                IdentityType.Facebook to "facebook_id"
-            )
-        )
+                IdentityType.Facebook to "facebook_id"))
 
         assertEquals(
             mockMoEngageKit.getMappedUserIdentity(
@@ -195,15 +175,11 @@ internal class MoEngageKitTest {
                     IdentityType.CustomerId to "customerIdValue",
                     IdentityType.Facebook to "facebookIdValue",
                     IdentityType.Email to "emailValue",
-                    IdentityType.Other to "otherAttributeNotAvailableInMapping"
-                )
-            ),
+                    IdentityType.Other to "otherAttributeNotAvailableInMapping")),
             mapOf(
                 "alias" to "aliasIdValue",
                 "customer_id" to "customerIdValue",
                 "facebook_id" to "facebookIdValue",
-                "u_em" to "emailValue"
-            )
-        )
+                "u_em" to "emailValue"))
     }
 }

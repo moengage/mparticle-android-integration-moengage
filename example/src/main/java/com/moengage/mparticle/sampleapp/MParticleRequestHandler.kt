@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 MoEngage Inc.
+ * Copyright (c) 2014-2025 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -10,7 +10,6 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.moengage.mparticle.sampleapp
 
 import android.location.Location
@@ -29,19 +28,22 @@ internal object MParticleRequestHandler {
     private const val TAG = "MParticleRequestHandler"
 
     fun logInUser() {
-        val identityRequest = IdentityApiRequest.withEmptyUser().run {
-            email("moengage@test.com")
-            customerId("loginUserId")
-            userIdentity(MParticle.IdentityType.Other, "moengage-mparticle-other-id-1")
-            userIdentity(MParticle.IdentityType.Facebook, "fb_id")
-            build()
-        }
+        val identityRequest =
+            IdentityApiRequest.withEmptyUser().run {
+                email("moengage@test.com")
+                customerId("loginUserId")
+                userIdentity(MParticle.IdentityType.Other, "moengage-mparticle-other-id-1")
+                userIdentity(MParticle.IdentityType.Facebook, "fb_id")
+                build()
+            }
 
-        MParticle.getInstance()?.Identity()
+        MParticle.getInstance()
+            ?.Identity()
             ?.login(identityRequest)
             ?.addSuccessListener { identityApiResult ->
                 Log.d(TAG, "identifyTask Id: ${identityApiResult.user.id}")
-            }?.addFailureListener { identityHttpResponse ->
+            }
+            ?.addFailureListener { identityHttpResponse ->
                 Log.d(TAG, "identifyTask Error: ${identityHttpResponse?.errors}")
             }
     }
@@ -67,40 +69,39 @@ internal object MParticleRequestHandler {
 
     fun trackCustomEvent() {
         // Event With Properties
-        val customAttributes = mapOf(
-            "category" to "Destination Intro",
-            "title" to "Paris"
-        )
+        val customAttributes = mapOf("category" to "Destination Intro", "title" to "Paris")
 
-        val eventWithProperties = MPEvent.Builder("Custom Event With Prop", EventType.Navigation)
-            .customAttributes(customAttributes)
-            .build()
+        val eventWithProperties =
+            MPEvent.Builder("Custom Event With Prop", EventType.Navigation)
+                .customAttributes(customAttributes)
+                .build()
 
         MParticle.getInstance()?.logEvent(eventWithProperties)
 
         // Event Without Properties
-        val eventWithoutProperties = MPEvent.Builder("Custom Event", EventType.Navigation)
-            .build()
+        val eventWithoutProperties = MPEvent.Builder("Custom Event", EventType.Navigation).build()
 
         MParticle.getInstance()?.logEvent(eventWithoutProperties)
     }
 
     fun trackCommerceEvent() {
-        val commerceEvent = CommerceEvent.Builder(
-            Product.ADD_TO_CART,
-            Product.Builder("productName", "productSKU", 2.0)
-                .customAttributes(mapOf("customAttrKey" to "customAttrValue"))
-                .category("productCategory")
-                .couponCode("productCouponCode")
-                .position(20)
-                .unitPrice(2.0)
-                .quantity(5.0)
-                .brand("productBrand")
-                .variant("productVariant")
+        val commerceEvent =
+            CommerceEvent.Builder(
+                    Product.ADD_TO_CART,
+                    Product.Builder("productName", "productSKU", 2.0)
+                        .customAttributes(mapOf("customAttrKey" to "customAttrValue"))
+                        .category("productCategory")
+                        .couponCode("productCouponCode")
+                        .position(20)
+                        .unitPrice(2.0)
+                        .quantity(5.0)
+                        .brand("productBrand")
+                        .variant("productVariant")
+                        .build())
+                .transactionAttributes(
+                    TransactionAttributes("customTransactionId_${currentMillis()}"))
+                .currency("inr")
                 .build()
-        ).transactionAttributes(TransactionAttributes("customTransactionId_${currentMillis()}"))
-            .currency("inr")
-            .build()
 
         MParticle.getInstance()?.logEvent(commerceEvent)
     }
@@ -136,21 +137,22 @@ internal object MParticleRequestHandler {
             IdentityApiRequest.withUser(MParticle.getInstance()?.Identity()?.currentUser)
                 .email("moengageChangedEmail@test.com")
                 .build()
-        MParticle.getInstance()?.Identity()?.modify(modifyRequest)
+        MParticle.getInstance()
+            ?.Identity()
+            ?.modify(modifyRequest)
             ?.addSuccessListener { identityApiResult ->
                 Log.d(TAG, "MoEngage Id Changed ${identityApiResult.user.userAttributes}")
-            }?.addFailureListener { identityHttpResponse ->
+            }
+            ?.addFailureListener { identityHttpResponse ->
                 Log.d(TAG, "MoEngage Id Changed Error ${identityHttpResponse?.errors}")
             }
     }
 
     fun logoutUser() {
-        MParticle.getInstance()?.Identity()
+        MParticle.getInstance()
+            ?.Identity()
             ?.logout(IdentityApiRequest.withEmptyUser().build())
-            ?.addSuccessListener {
-                Log.d(TAG, "Logout Completed")
-            }?.addFailureListener {
-                Log.d(TAG, "Logout Failed Error")
-            }
+            ?.addSuccessListener { Log.d(TAG, "Logout Completed") }
+            ?.addFailureListener { Log.d(TAG, "Logout Failed Error") }
     }
 }

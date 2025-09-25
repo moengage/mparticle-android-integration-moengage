@@ -34,6 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: source
+          fetch-depth: 0
           token: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
       - name: Build project
         working-directory: source
@@ -41,6 +42,6 @@ jobs:
       - name: Unit test
         working-directory: source
         run: ./gradlew test
-      - name: Ktlint check
+      - name: Lint check
         working-directory: source
-        run: ./gradlew ktlintcheck
+        run: ./gradlew spotlessCheck
