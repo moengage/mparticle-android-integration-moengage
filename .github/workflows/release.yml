@@ -34,6 +34,10 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           token: ${{ secrets.SDK_BOT_ACCESS_TOKEN }}
+      - name: Merge Development to Master
+        uses: ./sdk-automation-scripts/actions/action-git-development-to-master
+        with:
+          working-directory: source
       - name: Release mParticle MoEngage Kit
         working-directory: source
         env:
