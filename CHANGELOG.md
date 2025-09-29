@@ -1,4 +1,11 @@
 # mparticle-android-integration-moengage
+
+# Release Date
+
+## Release Version
+
+- [patch] Replaced the hard coded string mapping in `Cache` for identifier with exposed constant from `moe-android-sdk`
+
 # 25-09-2025
 
 ## 2.0.1

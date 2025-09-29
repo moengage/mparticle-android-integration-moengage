@@ -12,6 +12,9 @@
  */
 package com.moengage.mparticle.kits.internal
 
+import com.moengage.core.USER_IDENTIFIER_EMAIL
+import com.moengage.core.USER_IDENTIFIER_MOBILE
+import com.moengage.core.USER_IDENTIFIER_UID
 import com.mparticle.MParticle.IdentityType
 
 /**
@@ -24,10 +27,10 @@ internal object Cache {
     /** Default identity mapping */
     private var identityMapping =
         mutableMapOf(
-            IdentityType.Alias to "uid",
-            IdentityType.CustomerId to "uid",
-            IdentityType.Email to "u_em",
-            IdentityType.MobileNumber to "u_mb")
+            IdentityType.Alias to USER_IDENTIFIER_UID,
+            IdentityType.CustomerId to USER_IDENTIFIER_UID,
+            IdentityType.Email to USER_IDENTIFIER_EMAIL,
+            IdentityType.MobileNumber to USER_IDENTIFIER_MOBILE)
 
     /** Update the identity mapping with the provided mapping */
     fun setIdentityMapping(mapping: Map<IdentityType, String>) {
