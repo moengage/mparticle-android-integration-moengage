@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2024 MoEngage Inc.
+ * Copyright (c) 2014-$YEAR MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -10,31 +10,3 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-@Suppress("DSL_SCOPE_VIOLATION") plugins {
-    alias(moengageInternal.plugins.plugin.android.app) apply false
-    alias(moengageInternal.plugins.plugin.android.lib) apply false
-    alias(moengageInternal.plugins.plugin.kotlin.android) apply false
-    alias(libs.plugins.plugin.google.services) apply false
-    alias(moengageInternal.plugins.plugin.release) apply false
-    alias(libs.plugins.spotless)
-}
-
-subprojects {
-    apply(plugin = "com.diffplug.spotless")
-
-    spotless {
-        ratchetFrom = "origin/development"
-        kotlin {
-            ktfmt("0.56").kotlinlangStyle().configure {
-                it.setMaxWidth(100)
-                it.setManageTrailingCommas(false)
-                it.setRemoveUnusedImports(true)
-            }
-            target("src/**/*.kt") // Specify which files to format
-            targetExclude("**/build/**") // Exclude files in build directories
-            licenseHeaderFile("../License.txt")
-        }
-    }
-
-}
