@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2025 MoEngage Inc.
+ * Copyright (c) 2014-2026 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -16,7 +16,6 @@ import android.content.Context
 import com.moengage.core.internal.initialisation.InitConfig
 import com.moengage.core.internal.model.InstanceMeta
 import com.moengage.core.internal.model.SdkInstance
-import com.moengage.core.internal.remoteconfig.getDefaultRemoteConfig
 import com.moengage.mparticle.kits.MoEngageKit
 import com.mparticle.internal.CoreCallbacks
 import com.mparticle.internal.ReportingManager
@@ -42,7 +41,6 @@ internal class MockMoEngageKit : MoEngageKit() {
     override fun getSdkInstance(appId: String): SdkInstance {
         return SdkInstance(
             instanceMeta = InstanceMeta(MoEngage_APP_ID, true, true),
-            initConfig = InitConfig(MoEngage_APP_ID),
-            config = getDefaultRemoteConfig())
+            initConfig = InitConfig(MoEngage_APP_ID))
     }
 }
