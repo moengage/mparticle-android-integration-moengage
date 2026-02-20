@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 /*
  * Copyright (c) 2014-2024 MoEngage Inc.
  *
@@ -45,9 +47,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs += "-Xexplicit-api=strict"
+    kotlin {
+        compilerOptions {
+            jvmTarget = JvmTarget.JVM_1_8
+            freeCompilerArgs.add("-Xexplicit-api=strict")
+        }
     }
 }
 

@@ -1,9 +1,16 @@
 # mparticle-android-integration-moengage
 
+# Release Date
+
+## Release Version
+- [minor] AGP Version update from `8.7.3` to `8.13.2`
+
 # 29-01-2026
 
-## 2.3.0- Release notes [here](https://developers.moengage.com/hc/en-us/articles/44954767963284-2026#h_01KFD9D3PY3AF03HPJP19XYNZ0)
+## 2.3.0
+- Release notes [here](https://developers.moengage.com/hc/en-us/articles/44954767963284-2026#h_01KFD9D3PY3AF03HPJP19XYNZ0)
 - MoEngage SDK version updated to `14.06.00`
+
 # 20-01-2026
 
 ## 2.2.1
