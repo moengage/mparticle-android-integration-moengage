@@ -3,6 +3,8 @@
 # Release Date
 
 ## Release Version
+- [minor] Release notes [here](https://www.moengage.com/docs/developer-guide/release-notes/android-sdk/2026-1#25th-march-2026)
+- [minor] MoEngage SDK version updated to `14.08.00`
 - [minor] AGP Version update from `8.7.3` to `8.13.2`
 
 # 29-01-2026
