@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import com.moengage.gradle.android.library.plugin.configs.BuildConfigType
 
 /*
  * Copyright (c) 2014-2024 MoEngage Inc.
@@ -13,46 +13,26 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(moengageInternal.plugins.plugin.android.lib)
-    alias(moengageInternal.plugins.plugin.kotlin.android)
-    alias(moengageInternal.plugins.plugin.release)
+    alias(libs.plugins.plugin.native.module.config)
 }
 
-val libVersionName = project.findProperty("VERSION_NAME") as String
+moduleConfig.configure {
+    plugins {
+        kotlinSerializationEnabled = false
+        dokkaPluginEnabled = false
+    }
+    buildFeature {
+        buildConfigField(
+            BuildConfigType.STRING,
+            "MOENGAGE_KIT_VERSION",
+            "\"${project.findProperty("VERSION_NAME") as String}\""
+        )
+    }
+}
+
 android {
     namespace = "com.moengage.mparticle.kits"
-    compileSdk = moengageInternal.versions.compileSdk.get().toInt()
-
-    defaultConfig {
-        minSdk = moengageInternal.versions.minSdk.get().toInt()
-
-        buildConfigField("String", "MOENGAGE_KIT_VERSION", "\"$libVersionName\"")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    buildFeatures {
-        buildConfig = true
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_1_8
-            freeCompilerArgs.add("-Xexplicit-api=strict")
-        }
-    }
 }
 
 dependencies {
@@ -63,8 +43,4 @@ dependencies {
     testImplementation(libs.mParticleAndroidKitBase)
     testImplementation(moengageInternal.bundles.junit5)
     testImplementation(libs.mockito)
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }

@@ -1,5 +1,11 @@
 # mparticle-android-integration-moengage
 
+# Release Date
+
+## Release Version
+
+- [patch] MOEN-43940: Migrating from common gradle config to gradle config plugin
+
 # 25-03-2026
 
 ## 2.4.0
