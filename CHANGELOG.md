@@ -3,6 +3,8 @@
 # Release Date
 
 ## Release Version
+- [minor] Release notes [here](https://www.moengage.com/docs/developer-guide/release-notes/android-sdk/2026-1#15th-april-2026)
+- [minor] MoEngage SDK version updated to `14.09.00`
 
 - [patch] MOEN-43940: Migrating from common gradle config to gradle config plugin
 
