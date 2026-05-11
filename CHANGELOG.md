@@ -1,5 +1,11 @@
 # mparticle-android-integration-moengage
 
+# Release Date
+
+## Release Version
+
+- [major] MOEN-44438: Migration to AGP 9 and Kotlin 2
+
 # 23-06-2026
 
 ## 2.6.0
