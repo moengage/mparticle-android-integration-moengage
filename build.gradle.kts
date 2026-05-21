@@ -16,7 +16,6 @@ import com.diffplug.spotless.kotlin.KtfmtStep.TrailingCommaManagementStrategy
 @Suppress("DSL_SCOPE_VIOLATION") plugins {
     alias(moengageInternal.plugins.plugin.android.app) apply false
     alias(moengageInternal.plugins.plugin.android.lib) apply false
-    alias(moengageInternal.plugins.plugin.kotlin.android) apply false
     alias(libs.plugins.plugin.google.services) apply false
     alias(moengageInternal.plugins.plugin.release) apply false
     alias(libs.plugins.spotless)

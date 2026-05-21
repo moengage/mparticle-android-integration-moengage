@@ -4,7 +4,17 @@
 
 ## Release Version
 
-- [major] MOEN-44438: Migration to AGP 9 and Kotlin 2
+- [major] MOEN-44438: Gradle wrapper updated from `8.13` to `9.3.1`
+- [major] MOEN-44438: `com.moengage:android-dependency-catalog-internal` updated from `3.1.0` to `x.x.x` (to be updated to released catalog version)
+- [major] MOEN-44438: `com.moengage.android.library.config.plugin` updated from `0.0.4` to `x.x.x` (to be updated to released plugin version)
+- [major] MOEN-44438: `com.diffplug.spotless` updated from `7.2.1` to `8.5.1`
+- [major] MOEN-44438: ktfmt updated from `0.56` to `0.62`
+- [major] MOEN-44438: `com.google.gms.google-services` updated from `4.4.2` to `4.4.4`
+- [major] MOEN-44438: `com.mparticle:android-kit-base` updated from `5.73.1` to `5.78.5`
+- [major] MOEN-44438: `com.mparticle:android-core` updated from `5.73.1` to `5.78.5`
+- [major] MOEN-44438: `org.mockito:mockito-core` updated from `5.3.1` to `5.23.0`
+- [major] MOEN-44438: `com.google.android.material:material` updated from `1.12.0` to `1.13.0`
+- [major] MOEN-44438: Removed `org.jetbrains.kotlin.android`
 
 # 06-05-2026
 
