@@ -15,7 +15,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
 }
 
@@ -57,10 +56,14 @@ dependencies {
 
     implementation(projects.moengageKit)
 
-    implementation(moengage.androidXCompact)
-    implementation(moengage.androidXLifecycle)
-    implementation(moengage.gmsPlayAdIdentifier)
-    implementation(moengage.firebaseMessaging)
+    implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("androidx.lifecycle:lifecycle-process:2.10.0")
+    implementation("com.google.firebase:firebase-messaging:25.0.1")
+    implementation("com.google.android.gms:play-services-ads-identifier:18.3.0")
+//    implementation(moengage.androidXCompact)
+//    implementation(moengage.androidXLifecycle)
+//    implementation(moengage.gmsPlayAdIdentifier)
+//    implementation(moengage.firebaseMessaging)
 
     implementation(moengage.inapp)
     implementation(moengageInternal.kotlinStdLib)

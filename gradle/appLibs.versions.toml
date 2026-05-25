@@ -6,10 +6,10 @@ appVersion = "1"
 appVersionName = "1.0"
 
 [libraries]
-material = { module = "com.google.android.material:material", version = "1.12.0" }
+material = { module = "com.google.android.material:material", version = "1.13.0" }
 constraintLayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.2.1" }
 
-mParticleAndroidKitBase = { module = "com.mparticle:android-kit-base", version = "5.73.1" }
-mParticleCore = { module = "com.mparticle:android-core", version = "5.73.1" }
+mParticleAndroidKitBase = { module = "com.mparticle:android-kit-base", version = "5.78.5" }
+mParticleCore = { module = "com.mparticle:android-core", version = "5.78.5" }
 
 installReferrer = { module = "com.android.installreferrer:installreferrer", version = "2.2" }

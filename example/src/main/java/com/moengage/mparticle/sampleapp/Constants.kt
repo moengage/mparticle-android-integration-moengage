@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2025 MoEngage Inc.
+ * Copyright (c) 2014-2026 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -18,6 +18,7 @@ const val MOENGAGE_APP_ID = "MOENGAGE_APP_ID"
 /** Get Your Api Key & Secret From mParticle Dashboard */
 const val M_PARTICLE_API_KEY = "M_PARTICLE_API_KEY"
 const val M_PARTICLE_API_SECRET = "M_PARTICLE_API_SECRET"
+
 
 /** Get Your FCM Sender Id From FCM Dashboard */
 const val FCM_SENDER_ID = "YOUR SENDER ID"
