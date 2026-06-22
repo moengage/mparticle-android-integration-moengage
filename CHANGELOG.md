@@ -1,11 +1,5 @@
 # mparticle-android-integration-moengage
 
-# Release Date
-
-## Release Version
-
-- MOEN-45653: Added consumer ProGuard keep rule to prevent MoEngage SDK de-initialisation on minified builds
-
 # 26-05-2026
 
 ## 2.5.2
