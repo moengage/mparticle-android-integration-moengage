@@ -3,6 +3,8 @@
 # Release Date
 
 ## Release Version
+- [minor] Release notes [here](https://www.moengage.com/docs/release-notes/sdks/android#23rd-june-2026)
+- [minor] MoEngage SDK version updated to `14.10.00`
 
 - MOEN-45653: Added consumer ProGuard keep rule to prevent MoEngage SDK de-initialisation on minified builds
 
