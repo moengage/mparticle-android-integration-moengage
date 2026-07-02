@@ -11,5 +11,4 @@ mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 [plugins]
 plugin-google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 spotless = { id = "com.diffplug.spotless", version = "8.5.1" }
-# To be updated when plugin-native-module-config is released
-plugin-native-module-config = { id = "com.moengage.android.library.config.plugin", version = "0.0.5-v11" }
+plugin-native-module-config = { id = "com.moengage.android.library.config.plugin", version = "2.0.0" }

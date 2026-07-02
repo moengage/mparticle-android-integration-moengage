@@ -5,8 +5,8 @@
 ## Release Version
 
 - [major] MOEN-44438: Gradle wrapper updated from `8.13` to `9.3.1`
-- [major] MOEN-44438: `com.moengage:android-dependency-catalog-internal` updated from `3.1.0` to `x.x.x` (to be updated)
-- [major] MOEN-44438: `com.moengage.android.library.config.plugin` updated from `0.0.4` to `x.x.x` (to be updated)
+- [major] MOEN-44438: `com.moengage:android-dependency-catalog-internal` updated from `3.1.0` to `4.0.1`
+- [major] MOEN-44438: `com.moengage.android.library.config.plugin` updated from `0.0.4` to `2.0.0`
 - [major] MOEN-44438: ktfmt updated from `0.56` to `0.62`
 - [major] MOEN-44438: Dependency updates
   |                       Library / Plugin                      | Current Version     | Next Version       |
