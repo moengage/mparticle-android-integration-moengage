@@ -3,6 +3,8 @@
 # Release Date
 
 ## Release Version
+- [major] Release notes [here](https://www.moengage.com/docs/release-notes/sdks/android#7th-july-2026)
+- [major] MoEngage SDK version updated to `15.00.00`
 
 - [major] MOEN-44438: Gradle wrapper updated from `8.13` to `9.3.1`
 - [major] MOEN-44438: `com.moengage:android-dependency-catalog-internal` updated from `3.1.0` to `4.0.1`
