@@ -43,4 +43,5 @@ dependencies {
     testImplementation(libs.mParticleAndroidKitBase)
     testImplementation(moengageInternal.bundles.junit5)
     testImplementation(libs.mockito)
+    testImplementation(moengageInternal.mockkCore)
 }

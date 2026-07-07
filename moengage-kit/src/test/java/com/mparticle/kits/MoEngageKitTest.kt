@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2025 MoEngage Inc.
+ * Copyright (c) 2014-2026 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -13,6 +13,8 @@
 package com.mparticle.kits
 
 import android.content.Context
+import com.moengage.core.internal.SdkInstanceManager
+import com.moengage.core.internal.model.SdkInstance
 import com.moengage.mparticle.kits.KIT_NAME
 import com.moengage.mparticle.kits.MoEMParticleHelper
 import com.moengage.mparticle.kits.MoEngageKit
@@ -23,6 +25,11 @@ import com.mparticle.identity.MParticleUser
 import com.mparticle.kits.mocks.MockApplicationContext
 import com.mparticle.kits.mocks.MockMParticleUser
 import com.mparticle.kits.mocks.MockMoEngageKit
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.unmockkAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
@@ -40,9 +47,21 @@ internal class MoEngageKitTest {
 
     @BeforeEach
     fun setup() {
+        // Stub SdkInstanceManager so the SDK's integration validator doesn't throw
+        // SdkNotInitializedException in the absence of a real SDK init.
+        mockkObject(SdkInstanceManager)
+        val sdkInstance = mockk<SdkInstance>(relaxed = true)
+        every { SdkInstanceManager.getSdkInstance(any()) } returns sdkInstance
+        every { SdkInstanceManager.getInstanceForAppId(any()) } returns sdkInstance
+
         // Setup the MockMoEngageKit instance to use later
         mockMoEngageKit.onKitCreate(
             hashMapOf(MOE_APP_ID_KEY to MoEngage_APP_ID), MockApplicationContext())
+    }
+
+    @AfterEach
+    fun tearDown() {
+        unmockkAll()
     }
 
     /** Description: Test getName of MoEngageKit Excepted: kit name should equal to [KIT_NAME] */
