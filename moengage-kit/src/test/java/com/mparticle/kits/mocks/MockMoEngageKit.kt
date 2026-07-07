@@ -13,10 +13,11 @@
 package com.mparticle.kits.mocks
 
 import android.content.Context
+import com.moengage.core.DataCenter
 import com.moengage.core.internal.initialisation.InitConfig
-import com.moengage.core.internal.model.InstanceMeta
 import com.moengage.core.internal.model.SdkInstance
 import com.moengage.mparticle.kits.MoEngageKit
+import com.moengage.platform.internal.model.InstanceMeta
 import com.mparticle.internal.CoreCallbacks
 import com.mparticle.internal.ReportingManager
 import com.mparticle.kits.KitConfiguration
@@ -41,6 +42,6 @@ internal class MockMoEngageKit : MoEngageKit() {
     override fun getSdkInstance(appId: String): SdkInstance {
         return SdkInstance(
             instanceMeta = InstanceMeta(MoEngage_APP_ID, true, true),
-            initConfig = InitConfig(MoEngage_APP_ID))
+            initConfig = InitConfig(MoEngage_APP_ID, DataCenter.DATA_CENTER_1))
     }
 }
