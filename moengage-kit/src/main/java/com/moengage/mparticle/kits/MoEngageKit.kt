@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2025 MoEngage Inc.
+ * Copyright (c) 2014-2026 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -34,10 +34,10 @@ import com.moengage.core.internal.integrations.MoEIntegrationHelper
 import com.moengage.core.internal.logger.Logger
 import com.moengage.core.internal.model.IntegrationMeta
 import com.moengage.core.internal.model.SdkInstance
-import com.moengage.core.internal.utils.currentMillis
 import com.moengage.core.model.IntegrationPartner
 import com.moengage.firebase.MoEFireBaseHelper
 import com.moengage.mparticle.kits.internal.Cache.getIdentityForKey
+import com.moengage.platform.internal.utils.currentMillis
 import com.moengage.pushbase.MoEPushHelper
 import com.mparticle.MPEvent
 import com.mparticle.MParticle.IdentityType

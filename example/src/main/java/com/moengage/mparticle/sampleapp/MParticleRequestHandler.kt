@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2025 MoEngage Inc.
+ * Copyright (c) 2014-2026 MoEngage Inc.
  *
  * All rights reserved.
  *
@@ -14,7 +14,7 @@ package com.moengage.mparticle.sampleapp
 
 import android.location.Location
 import android.util.Log
-import com.moengage.core.internal.utils.currentMillis
+import com.moengage.platform.internal.utils.currentMillis
 import com.mparticle.MPEvent
 import com.mparticle.MParticle
 import com.mparticle.MParticle.EventType
