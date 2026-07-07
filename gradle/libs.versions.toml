@@ -1,7 +1,7 @@
 [versions]
-mParticleAndroidKitBase = "5.73.1"
-mockito = "5.3.1"
-googleServices = "4.4.2"
+mParticleAndroidKitBase = "5.78.5"
+mockito = "5.23.0"
+googleServices = "4.4.4"
 
 [libraries]
 moengageCore = { module = "com.moengage:moe-android-sdk", version = "14.10.00" }
@@ -10,5 +10,5 @@ mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 
 [plugins]
 plugin-google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
-spotless = { id = "com.diffplug.spotless", version = "7.2.1" }
-plugin-native-module-config = { id = "com.moengage.android.library.config.plugin", version = "0.0.4" }
+spotless = { id = "com.diffplug.spotless", version = "8.5.1" }
+plugin-native-module-config = { id = "com.moengage.android.library.config.plugin", version = "2.0.0" }
