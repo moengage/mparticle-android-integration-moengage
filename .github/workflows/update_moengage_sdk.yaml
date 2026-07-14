@@ -43,6 +43,16 @@ jobs:
         uses: ./sdk-automation-scripts/actions/android-build-verification
         with:
           working-directory: source
+      - name: Commit changes
+        working-directory: source
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "${{ github.event.inputs.ticket_number }}: Update moe-android-sdk version to ${{ github.event.inputs.moengage_version }}"
+            git push
+          else
+            echo "No changes to commit."
+          fi
       - name: Trigger release workflow
         working-directory: source
         run: |
