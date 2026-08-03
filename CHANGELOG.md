@@ -1,5 +1,11 @@
 # mparticle-android-integration-moengage
 
+# Release Date
+
+## Release Version
+- [minor] Release notes [here](https://www.moengage.com/docs/release-notes/sdks/android#3rd-aug-2026)
+- [minor] MoEngage SDK version updated to `15.01.00`
+
 # 07-07-2026
 
 ## 3.0.0
