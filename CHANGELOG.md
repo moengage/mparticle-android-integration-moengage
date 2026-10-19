@@ -1,5 +1,10 @@
 # mparticle-android-integration-moengage
 
+# Release Date
+
+## Release Version
+- [patch] SDK-145: Consumer ProGuard rules optimization and cleanup
+
 # 07-10-2026
 
 ## 3.4.0
